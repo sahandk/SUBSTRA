@@ -25,7 +25,7 @@ SUBSTRA.split_dataset = function(data, labels, folds){
 
 
 
-SUBSTRA.train <- function(expresData, labels, sideData=NULL, phase_1_ite, phase_2_ite=50,
+SUBSTRA.train <- function(expresData, labels, sideData=NULL, phase_1_ite=100, phase_2_ite=50,
                             alpha_p = 1, alpha_t = 1, alpha_ph = 1e-100, alpha_e = 1, alpha_sd = 1, magnitude=1, return.best=T){
   if(min(min(expresData))==0) expresData = expresData + 1
   withLabel=!is.null(labels)
