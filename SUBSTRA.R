@@ -56,9 +56,9 @@ SUBSTRA.train <- function(data, labels,
                           phase_1_ite=100,   # iterations with equal feature weights
                           phase_2_ite=50,    # iterations for learning the weights
                           verbose=T,
+                          alpha_l = 1e-100, # hyper-parameter for labels (small value if mislabeling is low and vice versa)
                           alpha_p = 1,       # hyper-parameter for column clustering
                           alpha_t = 1,       # hyper-parameter for row clustering
-                          alpha_ph = 1e-100, # hyper-parameter for labels (small value if mislabeling is low and vice versa)
                           alpha_e = 1){      # hyper-parameter for bicluster parameters
   
   data=as.matrix(data)
@@ -140,7 +140,7 @@ SUBSTRA.train <- function(data, labels,
   Pi=npINkp[occupied.kp]/Np
   Theta=(nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e/2)/
     (nesINkpkt[occupied.kp,occupied.kt,1]+nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e)
-  Psi=array(nvsINKp[occupied.kp,]+alpha_ph/Nv,dim=c(length(occupied.kp),2))/array(rep(npINkp[occupied.kp]+alpha_ph,2),dim=c(length(occupied.kp),2))
+  Psi=array(nvsINKp[occupied.kp,]+alpha_l/Nv,dim=c(length(occupied.kp),2))/array(rep(npINkp[occupied.kp]+alpha_l,2),dim=c(length(occupied.kp),2))
   best.model=list(column.clusters=match(kp,occupied.kp), row.clusters=match(kt,occupied.kt),
                   bicluster.counts=nesINkpkt[occupied.kp,occupied.kt,], counts.for.rows=neINtFORkp[,occupied.kp,], counts.for.pats=neINpFORkt[,occupied.kt,], counts.for.labels=nvsINKp[occupied.kp,],
                   Pi=Pi,Theta=t(Theta),Psi=Psi,row.weights=row.weights)
@@ -235,7 +235,7 @@ SUBSTRA.train <- function(data, labels,
       Theta=(nesINkpkt[sig.kp,sig.kt,2]+alpha_e/2)/(nesINkpkt[sig.kp,sig.kt,1]+nesINkpkt[sig.kp,sig.kt,2]+alpha_e)
       p.prob=rowSums(log(abs(reverseData-Theta[,match(kt,sig.kt)]))*
                        matrix(rep(row.weights,length(sig.kp)),nrow = length(sig.kp),ncol = Nt,byrow = T))+
-        log((nvsINKp[sig.kp,labels[p]]+alpha_ph/Nv)/(npINkp[sig.kp]+alpha_ph))
+        log((nvsINKp[sig.kp,labels[p]]+alpha_l/Nv)/(npINkp[sig.kp]+alpha_l))
       
       p.prob=p.prob+log(c(npINkp[occupied.kp],alpha_p))
       
@@ -268,7 +268,7 @@ SUBSTRA.train <- function(data, labels,
     Pi=npINkp[occupied.kp]/Np
     Theta=(nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e/2)/
       (nesINkpkt[occupied.kp,occupied.kt,1]+nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e)
-    Psi=(nvsINKp[occupied.kp,]+alpha_ph/Nv)/array(rep(npINkp[occupied.kp]+alpha_ph,2),dim=c(length(occupied.kp),2))
+    Psi=(nvsINKp[occupied.kp,]+alpha_l/Nv)/array(rep(npINkp[occupied.kp]+alpha_l,2),dim=c(length(occupied.kp),2))
     model=list(column.clusters=match(kp,occupied.kp), row.clusters=match(kt,occupied.kt),
                bicluster.counts=nesINkpkt[occupied.kp,occupied.kt,], counts.for.rows=neINtFORkp[,occupied.kp,], counts.for.pats=neINpFORkt[,occupied.kt,], counts.for.labels=nvsINKp[occupied.kp,],
                Pi=Pi,Theta=t(Theta), Psi=Psi,row.weights=row.weights)
@@ -284,6 +284,7 @@ SUBSTRA.train <- function(data, labels,
     rkt=cluster_similarity(kt,prev.kt)
     if(verbose){
       print("")
+      print("***************************************************************")
       print(paste0("Phase I - Iteration: ",ite))
       print("Changes from the previous iteration:")
       print(paste0("Column Clusters: ",p.diff," - ",length(occupied.kp)," clusters occupied."))
@@ -388,7 +389,7 @@ SUBSTRA.train <- function(data, labels,
       Theta=(nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e/2)/
         (nesINkpkt[occupied.kp,occupied.kt,1]+nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e)
       Pi=npINkp[occupied.kp]/Np
-      Psi=(nvsINKp[occupied.kp,]+alpha_ph/Nv)/array(rep(npINkp[occupied.kp]+alpha_ph,2),dim=c(length(occupied.kp),2))
+      Psi=(nvsINKp[occupied.kp,]+alpha_l/Nv)/array(rep(npINkp[occupied.kp]+alpha_l,2),dim=c(length(occupied.kp),2))
       
       # Error before adjusting the weights
       BO.model=list(column.clusters=match(kp,occupied.kp), row.clusters=match(kt,occupied.kt),
@@ -434,7 +435,7 @@ SUBSTRA.train <- function(data, labels,
       Theta=(nesINkpkt[sig.kp,sig.kt,2]+alpha_e/2)/(nesINkpkt[sig.kp,sig.kt,1]+nesINkpkt[sig.kp,sig.kt,2]+alpha_e)
       p.prob=rowSums(log(abs(reverseData-Theta[,match(kt,sig.kt)]))*
                        matrix(rep(row.weights,length(sig.kp)),nrow = length(sig.kp),ncol = Nt,byrow = T))+
-        log((nvsINKp[sig.kp,labels[p]]+alpha_ph/Nv)/(npINkp[sig.kp]+alpha_ph))
+        log((nvsINKp[sig.kp,labels[p]]+alpha_l/Nv)/(npINkp[sig.kp]+alpha_l))
       
       p.prob=p.prob+log(c(npINkp[occupied.kp],alpha_p))
       
@@ -469,7 +470,7 @@ SUBSTRA.train <- function(data, labels,
     Pi=npINkp[occupied.kp]/Np
     Theta=(nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e/2)/
       (nesINkpkt[occupied.kp,occupied.kt,1]+nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e)
-    Psi=(nvsINKp[occupied.kp,]+alpha_ph/Nv)/array(rep(npINkp[occupied.kp]+alpha_ph,2),dim=c(length(occupied.kp),2))
+    Psi=(nvsINKp[occupied.kp,]+alpha_l/Nv)/array(rep(npINkp[occupied.kp]+alpha_l,2),dim=c(length(occupied.kp),2))
     model=list(column.clusters=match(kp,occupied.kp), row.clusters=match(kt,occupied.kt),
                bicluster.counts=nesINkpkt[occupied.kp,occupied.kt,], counts.for.rows=neINtFORkp[,occupied.kp,], counts.for.columns=neINpFORkt[,occupied.kt,], counts.for.labels=nvsINKp[occupied.kp,],
                Pi=Pi,Theta=t(Theta), Psi=Psi,row.weights=row.weights)
@@ -482,7 +483,8 @@ SUBSTRA.train <- function(data, labels,
     rkt=cluster_similarity(kt,prev.kt)
     if(verbose){
       print("")
-      print(paste0("Phase I - Iteration: ",ite))
+      print("***************************************************************")
+      print(paste0("Phase II - Iteration: ",ite))
       print("Changes from the previous iteration:")
       print(paste0("Column Clusters: ",p.diff," - ",length(occupied.kp)," clusters occupied."))
       print(paste0("Row Clusters: ",t.diff," - ",length(occupied.kt)," clusters occupied."))
@@ -552,19 +554,20 @@ SUBSTRA.predict <- function(model, data){
 # The output is the 'magnitude' value with the best cross-validation AUC (Area Under the ROC Curve).
 # This value should be given as input to the 'SUBSTRA.train' function when training with 'data'
 
-SUBSTRA.tune_parameters <- function(data, labels,
-                                    pathToSUBSTRA,     # the address of SUBSTRA.R file
-                                    magnitudes=c(0.001,0.01,0.1,1,10),       # the set of magnitudes of feature weights to be checked
-                                    nfolds=3,          # number of cross-validation folds for parameter tuning
-                                    parallel=T,        # whether the cross-validation iterations should be executed in parallel
-                                    phase_1_ite=80,   # iterations with equal feature weights
-                                    phase_2_ite=30,    # iterations for learning the weights
-                                    verbose=T,
-                                    trainVerbose=F,     # wether the printings of train function should be displayed
-                                    alpha_p = 1,       # hyper-parameter for column clustering
-                                    alpha_t = 1,       # hyper-parameter for row clustering
-                                    alpha_ph = 1e-100, # hyper-parameter for labels (small value if mislabeling is low and vice versa)
-                                    alpha_e = 1){      # hyper-parameter for bicluster parameters
+SUBSTRA.tune <- function(data, labels,
+                         pathToSUBSTRA,     # the address of SUBSTRA.R file
+                         magnitudes=c(0.001,0.01,0.1,1,10),       # the set of magnitudes of feature weights to be checked
+                         nfolds=3,          # number of cross-validation folds for parameter tuning
+                         phase_1_ite=80,    # iterations with equal feature weights
+                         phase_2_ite=30,    # iterations for learning the weights
+                         parallel=T,        # whether the cross-validation iterations should be executed in parallel
+                         ncores=3,          # number of CPU cores available to this function (used if parellel=TRUE)
+                         verbose=T,
+                         trainVerbose=F,    # wether the printings of 'SUBSTRA.train' function should be displayed
+                         alpha_l = 1e-100, # hyper-parameter for labels (small value if mislabeling is low and vice versa)
+                         alpha_p = 1,       # hyper-parameter for column clustering
+                         alpha_t = 1,       # hyper-parameter for row clustering
+                         alpha_e = 1){      # hyper-parameter for bicluster parameters
   
   data=as.matrix(data)
   dataparts=SUBSTRA.split_dataset(data,labels,nfolds)
@@ -574,7 +577,7 @@ SUBSTRA.tune_parameters <- function(data, labels,
     if(verbose)
       print(paste0("Checking magnitude=",magnitude))
     if(parallel){
-      cl=makeCluster(nfolds)
+      cl=makeCluster(ncores)
       registerDoParallel(cl)
       results=foreach(i=1:nfolds, .combine = rbind, .packages = c("pROC","clusteval","e1071")) %dopar% {
         source(pathToSUBSTRA)
@@ -584,7 +587,7 @@ SUBSTRA.tune_parameters <- function(data, labels,
         testLabs=unlist(dataparts[[2]][i])
         
         model=SUBSTRA.train(trainData,trainLabs,phase_1_ite = phase_1_ite,phase_2_ite = phase_2_ite,verbose = trainVerbose,
-                            magnitude = magnitude,alpha_p = alpha_p,alpha_t = alpha_t,alpha_ph = alpha_ph,alpha_e = alpha_e)
+                            magnitude = magnitude,alpha_p = alpha_p,alpha_t = alpha_t,alpha_l = alpha_l,alpha_e = alpha_e)
         ps=SUBSTRA.predict(model,testData)[,2]
         r=roc(as.factor(testLabs), ps, direction = "<")
         length(testLabs)*r$auc
@@ -601,7 +604,7 @@ SUBSTRA.tune_parameters <- function(data, labels,
         testLabs=unlist(dataparts[[2]][i])
         
         model=SUBSTRA.train(trainData,trainLabs,phase_1_ite = phase_1_ite,phase_2_ite = phase_2_ite,verbose = trainVerbose,
-                            magnitude = magnitude,alpha_p = alpha_p,alpha_t = alpha_t,alpha_ph = alpha_ph,alpha_e = alpha_e)
+                            magnitude = magnitude,alpha_p = alpha_p,alpha_t = alpha_t,alpha_l = alpha_l,alpha_e = alpha_e)
         ps=SUBSTRA.predict(model,testData)[,2]
         r=roc(as.factor(testLabs), ps, direction = "<")
         AUC=AUC+length(testLabs)*r$auc
@@ -609,7 +612,8 @@ SUBSTRA.tune_parameters <- function(data, labels,
       AUC=AUC/length(labels)
     }
     
-    print(AUC)
+    if(verbose)
+      print(paste0("Achieved AUC = ",AUC))
     
     if(AUC > bestAUC){
       bestAUC=AUC
@@ -617,6 +621,198 @@ SUBSTRA.tune_parameters <- function(data, labels,
     }
   }
   
+  if(verbose)
+    print(paste0("Selected 'magnitude': ",bestMagnitude))
+  
   bestMagnitude
 }
 
+
+
+# This function trains 'ntimes' models and aggregates them into one model through consensus clustering
+# The Output is a list containing the following elements:
+#   column.clusters: the cluster indexes for columns of 'data'
+#   row.clusters: the cluster indexes for rows of 'data'
+#   row.weights: values of weights assigned to each row/feature
+
+SUBSTRA.train_consensus <- function(data, labels,
+                                    ntimes=5,          # the number of models to be trained and aggregated
+                                    parallel=T,        # whether the models should be trained in parallel
+                                    ncores=5,          # number of CPU cores available to this function (used if parellel=TRUE)
+                                    verbose=T,
+                                    ## Tuning Arguments
+                                    pathToSUBSTRA,     # the address of SUBSTRA.R file
+                                    magnitudes=c(0.001,0.01,0.1,1,10),     # the set of magnitudes of feature weights to be checked
+                                    nfolds_tune=3,     # number of cross-validation folds for parameter tuning
+                                    phase_1_ite_tune=80,      # Phase I iterations for SUBSTRA.tune
+                                    phase_2_ite_tune=30,      # Phase II iterations for SUBSTRA.tune
+                                    parallel_tune=T,   # whether the cross-validation iterations of 'SUBSTRA.tune' should be executed in parallel
+                                    verbose_tune=F,    # wether the printings of 'SUBSTRA.tune' function should be displayed
+                                    trainVerbose_tune=F,      # wether the printings of 'SUBSTRA.train' inside the SUBSTRA.tune' function should be displayed
+                                    ## Training Arguments
+                                    phase_1_ite_train=100,    # Phase I iterations for SUBSTRA.train
+                                    phase_2_ite_train=50,     # Phase II iterations for SUBSTRA.train
+                                    verbose_train=F,  # wether the printings of 'SUBSTRA.train' function should be displayed
+                                    ## Common Arguments
+                                    alpha_l = 1e-100, # hyper-parameter for labels (small value if mislabeling is low and vice versa)
+                                    alpha_p = 1,       # hyper-parameter for column clustering
+                                    alpha_t = 1,       # hyper-parameter for row clustering
+                                    alpha_e = 1){      # hyper-parameter for bicluster parameters
+  
+  # Tuning
+  if(verbose)
+    print("Tuning the 'magnitude'...")
+  
+  magnitude=SUBSTRA.tune(data,labels,pathToSUBSTRA,magnitudes,nfolds_tune,phase_1_ite_tune,phase_1_ite_tune,parallel_tune,
+                         min(ncores,nfolds),verbose_tune,trainVerbose_tune,alpha_l,alpha_p,alpha_t,alpha_e)
+  if(verbose)
+    print(paste0("Selected 'magnitude': ",magnitude))
+  
+  # Training
+  if(verbose)
+    print("Training the individual models...")
+  
+  results.kp=matrix(0,nrow = ntimes,ncol = ncol(data))
+  results.kt=results.w=matrix(0,nrow = ntimes,ncol = nrow(data))
+  if(parallel){
+    cl=makeCluster(ncores)
+    registerDoParallel(cl)
+    results=foreach(i=1:ntimes, .combine = rbind, .packages = c("pROC","clusteval")) %dopar% {
+      source(pathToSUBSTRA)
+      model=SUBSTRA.train(data,labels,magnitude,phase_1_ite_train,phase_2_ite_train,verbose_train,alpha_l,alpha_p,alpha_t,alpha_e)
+      rbind(model$column.clusters,model$row.clusters,rep(model$row.weights,ceiling(ncol(data)/nrow(data))))
+    }
+    stopCluster(cl)
+    registerDoSEQ()
+    results.kp=results[seq(1,ntimes*3,3),1:ncol(data)]
+    results.kt=results[seq(2,ntimes*3,3),1:nrow(data)]
+    results.w=results[seq(3,ntimes*3,3),1:nrow(data)]
+  }else{
+    for(i in 1:ntimes){
+      model=SUBSTRA.train(data,labels,magnitude,phase_1_ite_train,phase_2_ite_train,verbose_train,alpha_l,alpha_p,alpha_t,alpha_e)
+      results.kp[i,]=model$column.clusters
+      results.kt[i,]=model$row.clusters
+      results.w[i,]=model$row.weights
+    }
+  }
+  
+  # Consensus
+  if(verbose)
+    print("Aggregating the models...")
+  
+  SUBSTRA.aggregate(results.kp,results.kt,results.w)
+}
+  
+
+
+# This function aggregates the results from several models through consensus clustering (based on hierarchical clustering)
+# The output is a list containing aggregate column clusters, aggregate, row clusters, and aggregate row weights
+
+SUBSTRA.aggregate <- function(results.kp,  # column.clusters from different models
+                              results.kt,  # row.clusters from different models
+                              results.w){  # row.weights from different models
+  
+  ntimes=nrow(results.kp)
+  ## Column Clusters
+  results.kp=apply(results.kp,2,as.numeric)
+  kpcooc=matrix(0,ncol = ncol(results.kp),nrow = ncol(results.kp))
+  for(i1 in 1:ncol(results.kp))
+    for(i2 in 1:ncol(results.kp)){
+      kpcooc[i1,i2]=length(which(results.kp[,i1]==results.kp[,i2]))
+    }
+  numcl=round(max(apply(results.kp,1,function(x) length(unique(x)))))
+  for(thr in seq(0,ntimes,ntimes/100)){
+    kphc=hclust(as.dist(ntimes-kpcooc),method = 'average')
+    kp=cutree(kphc,h=thr)
+    if(max(kp)<numcl)
+      break
+  }
+  binarymat=matrix(0,nrow = length(kp),ncol = length(kp))
+  for(i in 1:numcl){
+    binarymat[which(kp==i),which(kp==i)]=1
+  }
+  print("Cophenetic Coefficient for Column Clustering:")
+  print(abs(cor(as.vector(binarymat),as.vector(kpcooc))))
+  
+  ## Row Clusters
+  results.kt=apply(results.kt,2,as.numeric)
+  ktcooc=matrix(0,ncol = ncol(results.kt),nrow = ncol(results.kt))
+  for(i1 in 1:ncol(results.kt))
+    for(i2 in 1:ncol(results.kt)){
+      ktcooc[i1,i2]=length(which(results.kt[,i1]==results.kt[,i2]))
+    }
+  numcl=round(max(apply(results.kt,1,function(x) length(unique(x)))))
+  for(thr in seq(0,ntimes,ntimes/100)){
+    kthc=hclust(as.dist(ntimes-ktcooc),method = 'average')
+    kt=cutree(kthc,h=thr)
+    if(max(kt)<numcl)
+      break
+  }
+  binarymat=matrix(0,nrow = length(kt),ncol = length(kt))
+  for(i in 1:numcl){
+    binarymat[which(kt==i),which(kt==i)]=1
+  }
+  print("Cophenetic Coefficient for Row Clustering:")
+  print(abs(cor(as.vector(binarymat),as.vector(ktcooc))))
+  
+  ## Row Weights
+  weights=apply(results.w,2,mean)
+  
+  list(column.clusters=kp,row.clusters=kt,row.weights=weights)
+}
+
+
+
+# This function draws a heatmap for a given biclustering
+# The output is a heatmap, a visualization of the Theta and other model parameters, with rows corresponding to row clusters and columns to column clusters
+# The heatmap consists of the following elements:
+#    LR: Label Ratio--the ratio of '1' labels inside the column clusters;
+#    RCSize/CCSize: the size of row/column cluster
+#    AvgW: average weight for row cluster
+# Row clusters are sorted by 'AvgW' in descending order from top to bottom
+# The color inside each cell indicates the proportion of 1 data points for the elements inside the corresponding bicluster, with red meaning high proportion and blue indicating low proportion
+
+SUBSTRA.heatmap <- function(data, labels,
+                            model,      # the model for which the heatmap is being drawn
+                            pathToPDF,  # the address to store the heatmap
+                            title){     # the title of the heatmap
+  
+  column.clusters=model$column.clusters
+  row.clusters=model$row.clusters
+  row.weights=model$row.weights
+  
+  ncc=max(column.clusters)
+  nrc=max(row.clusters)
+  data=as.matrix(data)
+  maxv=max(data)
+  Theta=matrix(0,nrow=nrc,ncol=ncc)
+  for(i in 1:nrc){
+    tinds=which(row.clusters==i)
+    for(j in 1:ncc){
+      pinds=which(column.clusters==j)
+      Theta[i,j]=(length(which(data[tinds,pinds]==maxv)))/(length(pinds)*length(tinds))
+    }
+  }
+
+  colnames(Theta)=c(1:ncc)
+  rownames(Theta)=c(1:nrc)
+
+  df=data.frame(RCl=row.clusters,W=row.weights)
+  temp=aggregate(df$W,by=list(RCl=df$RCl),FUN=function(x) c(AvgW=mean(x),Size=length(x)))
+  rowanot=data.frame(RCSize=temp$x[,2],
+                     AvgW=temp$x[,1])
+  rownames(rowanot)=temp$RCl
+  roworder=order(rowanot$AvgW,decreasing = T)
+
+  df=data.frame(CCl=column.clusters,Labels=labels)
+  temp=aggregate(df$Labels,by=list(CCl=df$CCl),FUN=function(x) c(mean(x),length(x)))
+  colanot=data.frame(CCSize=temp$x[,2],LR=temp$x[,1])
+  rownames(colanot)=temp$CCl
+  colorder=order(colanot$LR)
+
+
+  pheatmap(Theta[match(rownames(rowanot[roworder,]),rownames(Theta)),match(rownames(colanot[colorder,]),colnames(Theta))],
+           annotation_row = rowanot,annotation_col = colanot,#fontsize_row = 20,fontsize_col = 20,
+           fontsize = 13,show_colnames = T,show_rownames = T, filename = pathToPDF,width = 11.69,height = 8.27,
+           cluster_cols = F,cluster_rows = F,main = title,legend_breaks = seq(0,1,by = 0.1),gaps_col = length(which(colanot$LR==0)))
+}
