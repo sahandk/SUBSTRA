@@ -1,9 +1,13 @@
 This folder contains the following files:
 
-1- 'ExampleUsage.R': Shows examples of how different functions implemented in 'SUBSTRA.R' can be used. It contains four combinations of commands numberred (1) to (4).
+1- 'data.txt': A binary matrix with 200 rows and 100 columns (a sample input for SUBSTRA functions)
 
-2- 'Output of (1).txt' to 'Output of (3).txt': Console outputs of command combinations (1) to (3) in 'ExampleUsage.R'
+2- 'labels.txt': A binary vector with 100 labels associated with the columns of 'data.txt' (a sample input for SUBSTRA functions)
 
-3- Folder 'Output of (4)': Contains two PDF files (heatmaps) produced by command combination (4) in 'ExampleUsage.R'
+3- 'ExampleUsage.R': Shows examples of how different functions implemented in 'SUBSTRA.R' can be used. It contains four combinations of commands numberred (1) to (4).
 
-4- 'README.txt'
+4- 'Output of (1).txt' to 'Output of (3).txt': Console outputs of command combinations (1) to (3) in 'ExampleUsage.R'
+
+5- Folder 'Output of (4)': Contains two PDF files (heatmaps) produced by command combination (4) in 'ExampleUsage.R'.
+
+6- 'README.txt'
