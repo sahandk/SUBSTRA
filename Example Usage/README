@@ -1,0 +1,9 @@
+This folder contains the following files:
+
+1- 'ExampleUsage.R': Shows examples of how different functions implemented in 'SUBSTRA.R' can be used. It contains four combinations of commands numberred (1) to (4).
+
+2- 'Output of (1).txt' to 'Output of (3).txt': Console outputs of command combinations (1) to (3) in 'ExampleUsage.R'
+
+3- Folder 'Output of (4)': Contains two PDF files (heatmaps) produced by command combination (4) in 'ExampleUsage.R'
+
+4- 'README.txt'
