@@ -1,0 +1,1093 @@
+> model=SUBSTRA.train(data = data,labels = labels,magnitude = 1,phase_1_ite = 50,phase_2_ite = 20)
+[1] "Initial Status:"
+[1] "Train Set AUC: 0.781428571428571"
+[1] "Train Set MSE: 0.17200386770191"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 1"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 43 - 11 clusters occupied."
+[1] "Row Clusters: 180 - 16 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.234021632251721"
+[1] "Row Clustering: 0.0358294518093873"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.994761904761905"
+[1] "Train Set MSE: 0.0282138845239"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 2"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 25 - 11 clusters occupied."
+[1] "Row Clusters: 149 - 16 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.413333333333333"
+[1] "Row Clustering: 0.0739560089257252"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.998571428571429"
+[1] "Train Set MSE: 0.01752840711851"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 3"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 34 - 11 clusters occupied."
+[1] "Row Clusters: 131 - 17 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.325018896447468"
+[1] "Row Clustering: 0.109318063508589"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.996190476190476"
+[1] "Train Set MSE: 0.0268724879627"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 4"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 21 - 9 clusters occupied."
+[1] "Row Clusters: 124 - 14 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.612338156892612"
+[1] "Row Clustering: 0.133655994043187"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.993809523809524"
+[1] "Train Set MSE: 0.01927182130817"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 5"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 14 - 10 clusters occupied."
+[1] "Row Clusters: 102 - 9 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.802459646425826"
+[1] "Row Clustering: 0.200028312570781"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.997142857142857"
+[1] "Train Set MSE: 0.02074408920058"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 6"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 10 - 6 clusters occupied."
+[1] "Row Clusters: 85 - 8 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.795964125560538"
+[1] "Row Clustering: 0.264206281314921"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.993809523809524"
+[1] "Train Set MSE: 0.03054322447952"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 7"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 5 - 7 clusters occupied."
+[1] "Row Clusters: 90 - 10 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.890637293469709"
+[1] "Row Clustering: 0.249210249210249"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.999047619047619"
+[1] "Train Set MSE: 0.01500975415451"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 8"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 9 - 9 clusters occupied."
+[1] "Row Clusters: 96 - 9 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.763518966908797"
+[1] "Row Clustering: 0.227250489236791"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00134180899249"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 9"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 12 - 8 clusters occupied."
+[1] "Row Clusters: 91 - 7 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.708912510220769"
+[1] "Row Clustering: 0.229408854810784"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00614133577981"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 10"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 10 - 9 clusters occupied."
+[1] "Row Clusters: 93 - 8 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.748562037797864"
+[1] "Row Clustering: 0.227038310412574"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.999047619047619"
+[1] "Train Set MSE: 0.01790146420901"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 11"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 11 - 8 clusters occupied."
+[1] "Row Clusters: 87 - 10 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.737785016286645"
+[1] "Row Clustering: 0.24243158149673"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00508212458369"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 12"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 12 - 5 clusters occupied."
+[1] "Row Clusters: 80 - 7 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.694852941176471"
+[1] "Row Clustering: 0.272652485603479"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.998571428571429"
+[1] "Train Set MSE: 0.01220912916358"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 13"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 9 - 6 clusters occupied."
+[1] "Row Clusters: 97 - 6 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.777198211624441"
+[1] "Row Clustering: 0.238473589973142"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.999047619047619"
+[1] "Train Set MSE: 0.01996897930741"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 14"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 10 - 7 clusters occupied."
+[1] "Row Clusters: 97 - 6 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.783763277693475"
+[1] "Row Clustering: 0.226829820983458"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.990952380952381"
+[1] "Train Set MSE: 0.02847456508954"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 15"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 8 - 6 clusters occupied."
+[1] "Row Clusters: 108 - 6 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.827169811320755"
+[1] "Row Clustering: 0.207325344788605"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.992857142857143"
+[1] "Train Set MSE: 0.02786946312656"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 16"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 11 - 5 clusters occupied."
+[1] "Row Clusters: 98 - 5 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.730526315789474"
+[1] "Row Clustering: 0.226699136595085"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.995238095238095"
+[1] "Train Set MSE: 0.02821458322041"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 17"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 14 - 7 clusters occupied."
+[1] "Row Clusters: 104 - 6 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.688513037350247"
+[1] "Row Clustering: 0.258627412751024"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.990476190476191"
+[1] "Train Set MSE: 0.02826785164757"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 18"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 14 - 6 clusters occupied."
+[1] "Row Clusters: 90 - 5 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.679886685552408"
+[1] "Row Clustering: 0.312189054726368"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.990476190476191"
+[1] "Train Set MSE: 0.02749078818625"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 19"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 12 - 8 clusters occupied."
+[1] "Row Clusters: 70 - 5 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.735518292682927"
+[1] "Row Clustering: 0.350910834132311"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.998095238095238"
+[1] "Train Set MSE: 0.02009500962555"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 20"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 13 - 8 clusters occupied."
+[1] "Row Clusters: 71 - 4 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.725741780272654"
+[1] "Row Clustering: 0.35498235590657"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.981428571428571"
+[1] "Train Set MSE: 0.03632347536333"
+
+.....
+<truncated>
+.....
+
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 48"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 9 - 5 clusters occupied."
+[1] "Row Clusters: 83 - 5 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.852819807427785"
+[1] "Row Clustering: 0.365670474104209"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.999047619047619"
+[1] "Train Set MSE: 0.01569482704113"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 49"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 7 - 5 clusters occupied."
+[1] "Row Clusters: 78 - 5 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.837240455458808"
+[1] "Row Clustering: 0.390095032063664"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.992857142857143"
+[1] "Train Set MSE: 0.02490733915102"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase I - Iteration: 50"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 5 - 4 clusters occupied."
+[1] "Row Clusters: 67 - 5 clusters occupied."
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.872916666666667"
+[1] "Row Clustering: 0.457660991857883"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 1 - 1 - 1"
+[1] ""
+[1] "Train Set AUC: 0.993333333333333"
+[1] "Train Set MSE: 0.02726125207745"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 1"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 8 - 6 clusters occupied."
+[1] "Row Clusters: 65 - 5 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.802668539325843"
+[1] "Row Clustering: 0.453649499814746"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.21000758937605 - 1.00594568023554 - 1.66358031922583"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.01531758489732"
+[1] ""
+[1] "Best Model Updated!!!"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 2"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 9 - 7 clusters occupied."
+[1] "Row Clusters: 75 - 7 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.79984544049459"
+[1] "Row Clustering: 0.380752160710114"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.0350478618625536 - 1.0050899363948 - 2.21163463286632"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00560421159855"
+[1] ""
+[1] "Best Model Updated!!!"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 3"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 10 - 5 clusters occupied."
+[1] "Row Clusters: 74 - 6 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.763796909492274"
+[1] "Row Clustering: 0.413357815010328"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.208168705053218 - 1.01291338549001 - 2.35856698576706"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00501445577271"
+[1] ""
+[1] "Best Model Updated!!!"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 4"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 3 - 5 clusters occupied."
+[1] "Row Clusters: 74 - 6 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.904761904761905"
+[1] "Row Clustering: 0.423113241810126"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.0809375431134458 - 1.02011418829741 - 2.41449413183015"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00861134204354"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 5"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 7 - 5 clusters occupied."
+[1] "Row Clusters: 71 - 5 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.782923299565847"
+[1] "Row Clustering: 0.433074897600936"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.391652487698535 - 1.02600632648872 - 2.44386471538962"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00147529717659"
+[1] ""
+[1] "Best Model Updated!!!"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 6"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 6 - 5 clusters occupied."
+[1] "Row Clusters: 51 - 5 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.842748091603053"
+[1] "Row Clustering: 0.516339869281046"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.296485347579038 - 1.02640580043503 - 2.50516515274506"
+[1] ""
+[1] "Train Set AUC: 0.998095238095238"
+[1] "Train Set MSE: 0.00955598375959"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 7"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 5 - 5 clusters occupied."
+[1] "Row Clusters: 63 - 7 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.872128637059724"
+[1] "Row Clustering: 0.470808823529412"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.200194531232918 - 1.02723192799872 - 2.6483189040638"
+[1] ""
+[1] "Train Set AUC: 0.994285714285714"
+[1] "Train Set MSE: 0.01152494587656"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 8"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 2 - 4 clusters occupied."
+[1] "Row Clusters: 65 - 5 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.939796716184519"
+[1] "Row Clustering: 0.44601291485208"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.218664538181337 - 1.02955220089025 - 2.65883044325509"
+[1] ""
+[1] "Train Set AUC: 0.993809523809524"
+[1] "Train Set MSE: 0.01262726305384"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 9"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 3 - 5 clusters occupied."
+[1] "Row Clusters: 66 - 5 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.903697996918336"
+[1] "Row Clustering: 0.427658427658428"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.307262256761843 - 1.03136817737364 - 2.81916248562772"
+[1] ""
+[1] "Train Set AUC: 0.999047619047619"
+[1] "Train Set MSE: 0.00974650363086"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 10"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 6 - 6 clusters occupied."
+[1] "Row Clusters: 78 - 6 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.822520507084265"
+[1] "Row Clustering: 0.378432893716059"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.334933489418061 - 1.02811333695658 - 2.99522520676943"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00081863259924"
+[1] ""
+[1] "Best Model Updated!!!"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 11"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 9 - 7 clusters occupied."
+[1] "Row Clusters: 68 - 4 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.759053954175905"
+[1] "Row Clustering: 0.401132609721567"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.298743533444332 - 1.03114062723827 - 2.95809235762255"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00515607746124"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 12"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 7 - 6 clusters occupied."
+[1] "Row Clusters: 59 - 5 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.809968847352025"
+[1] "Row Clustering: 0.449336128581412"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.502048752872868 - 1.0306627946232 - 2.98432276755902"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00340059537274"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 13"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 15 - 6 clusters occupied."
+[1] "Row Clusters: 58 - 6 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.663461538461538"
+[1] "Row Clustering: 0.479829990306465"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.441757091471429 - 1.03114062189889 - 3.04952794116478"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00332902855205"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 14"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 13 - 6 clusters occupied."
+[1] "Row Clusters: 51 - 6 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.691729323308271"
+[1] "Row Clustering: 0.534274476752353"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.406146152337655 - 1.03336945505448 - 3.2890348781339"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00480518273385"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 15"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 7 - 6 clusters occupied."
+[1] "Row Clusters: 49 - 7 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.802450229709035"
+[1] "Row Clustering: 0.57655388385867"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.379837377200974 - 1.03264529800055 - 3.43846686364048"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00206355521048"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 16"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 12 - 5 clusters occupied."
+[1] "Row Clusters: 39 - 9 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.711580480699199"
+[1] "Row Clustering: 0.664703795672224"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.409732156776017 - 1.03242297426327 - 3.73627797099609"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00110891013827"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 17"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 8 - 5 clusters occupied."
+[1] "Row Clusters: 37 - 9 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.771362586605081"
+[1] "Row Clustering: 0.673442577611837"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.423870716912148 - 1.03570983398145 - 3.88670964428801"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00045914575672"
+[1] ""
+[1] "Best Model Updated!!!"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 18"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 8 - 5 clusters occupied."
+[1] "Row Clusters: 38 - 9 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.748847926267281"
+[1] "Row Clustering: 0.663041289023162"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.425054591194048 - 1.03365757837718 - 3.88215433311643"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00052172245938"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 19"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 7 - 6 clusters occupied."
+[1] "Row Clusters: 27 - 7 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.774625689519307"
+[1] "Row Clustering: 0.738949348381029"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.431231865981879 - 1.03480903555714 - 4.00906701964315"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.001212199278"
+[1] ""
+[1] "***************************************************************"
+[1] "Phase II - Iteration: 20"
+[1] "Changes from the previous iteration:"
+[1] "Column Clusters: 14 - 4 clusters occupied."
+[1] "Row Clusters: 28 - 7 clusters occupied."
+[1] "Row Weights: 200"
+[1] ""
+[1] "Similarity with the previous iteration (Rand Indexes):"
+[1] "Column Clustering:    0.638208537438768"
+[1] "Row Clustering: 0.729872611464968"
+[1] ""
+[1] "Current Weights (Min - Average - Max): 0.329553764942653 - 1.03684597850529 - 4.39339701990911"
+[1] ""
+[1] "Train Set AUC: 1"
+[1] "Train Set MSE: 0.00197871820019"
+
+> print(model)
+$column.clusters
+  [1] 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 2 1 1 1 1 1 1 1 2 4 4 4 4 4 4 3 4 4 3 3 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5
+ [67] 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 3 3 3 3 3 3 3 3 3 3 3 3 4 3 3 3 4 3 3
+
+$row.clusters
+  [1] 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 4 3 5 3 4 3 3 3 3 3 3 3 3 3 6 3 3 3 3 3 3 7 6 3 3 3 7 4 8 3 3 6 3 6
+ [67] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 7 3 3 3 3 5 3 3 3 3 3 3 3 3 3 3 3 3 8 3 3 3 3 4 3 4 3 3 3 3 3 3 3 3 3 3 3 3
+[133] 3 3 3 3 3 3 3 3 9 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 5 3 3 3 3 3 3 3 3 3 3 8 3 3 3 3 3 3 3 3 3 5 3 3 3 3 3 3 3 3 6 3 3 3 3 3 5
+[199] 7 3
+
+$bicluster.counts
+, , 1
+
+     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+[1,]   86   90 2019   66   61   75   53   39   12
+[2,]   10    4  320    5   17    8    9    6    2
+[3,]  145  142 1548   59   37   43   31   29    9
+[4,]   72  229 2226   85   94   72   44   45   12
+[5,]  193   40 1591   59   62   65   43   38   15
+
+, , 2
+
+     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+[1,]  174  170 2063   64   69   55   51   39   14
+[2,]   30   36  308   15    3   12    7    6    2
+[3,]   55   58 1592   41   63   57   49   31   11
+[4,]  218   61 2327   60   51   73   72   42   17
+[5,]   17  170 1706   46   43   40   41   25    6
+
+
+$counts.for.rows
+, , 1
+
+       [,1] [,2] [,3] [,4] [,5]
+  [1,]    8    1   16    7   18
+  [2,]    8    0   12    9   20
+  [3,]    8    2   13    6   18
+  [4,]    4    0   17    5   20
+  [5,]   10    1   16    8   21
+  [6,]    9    0   17    8   20
+  [7,]   12    2   16    6   20
+  [8,]    8    2   14   11   18
+  [9,]   10    0   12    4   18
+ [10,]    9    2   12    8   20
+ [11,]    8    0   16   23    5
+ [12,]    9    0   12   23    3
+ [13,]    6    0   11   22    2
+ [14,]    6    2   16   20    4
+ [15,]   12    0   16   20    5
+ [16,]   10    0   15   23    4
+ [17,]   12    1   14   25    6
+ [18,]   10    0   13   24    5
+ [19,]    7    0   13   27    2
+ [20,]   10    1   16   22    4
+ [21,]    7    2    8   12   14
+ [22,]   10    2   11   12   12
+ [23,]   12    2   11   17   10
+ [24,]   13    2   12   12   10
+ [25,]   14    2    8   14   10
+ [26,]   16    1   11   16   11
+ [27,]   18    4   12   20    7
+ [28,]   12    1   10   17   10
+ [29,]   16    3    9    9    9
+ [30,]   15    2   10   10   10
+ [31,]   13    1    9   15    9
+ [32,]   12    2   11   15   14
+ [33,]   15    2   11   19   12
+ [34,]   11    2   10   14    8
+ [35,]   15    3    7   19    9
+ [36,]   19    1   11   15    9
+ [37,]   12    1   14   16   10
+ [38,]   13    1   15   11    7
+ [39,]   12    1   10   17    8
+ [40,]   13    1   10   17    9
+ [41,]   11    2    9   14   10
+ [42,]   14    3    7   12    9
+ [43,]   15    1   12   15   15
+ [44,]   12    1    6   12   11
+ [45,]    8    2    9   12   11
+ [46,]   11    3    8   11   12
+ [47,]   16    1    8   14   13
+ [48,]   15    0   14   13   12
+ [49,]   15    3   12   20    7
+ [50,]   16    4   13   12   13
+ [51,]    8    1    3   16    8
+ [52,]   12    1   11   12    9
+ [53,]   16    4    7   17    9
+ [54,]   14    2    8   12   12
+ [55,]   13    1    7   18   12
+ [56,]   11    2   11   13    8
+ [57,]    9    1   10   17    6
+ [58,]   12    2    5   13   10
+ [59,]   11    1   10   11   11
+ [60,]   13    1   10   17   13
+ [61,]   17    1   10   17   13
+ [62,]   12    2   10   14   11
+ [63,]    9    0   11   11   13
+ [64,]   15    2   11   17   12
+ [65,]    8    4   12   13   12
+ [66,]   13    3    8    9   11
+ [67,]   10    0   10   12   11
+ [68,]   12    1   10   18   12
+ [69,]   13    2   13   17    9
+ [70,]   15    2   10   18   12
+ [71,]    8    0   12   11   14
+ [72,]   15    3   13   11   11
+ [73,]   14    3   11   18   12
+ [74,]   12    2    8   14   10
+ [75,]   12    4    9   15    9
+ [76,]   11    2   12   12    8
+ [77,]   14    2    6   14    7
+ [78,]   14    3    5   16    6
+ [79,]    8    2   10   14    9
+ [80,]   15    0   10   12   13
+ [81,]   17    2    9   12   10
+ [82,]   13    3    7   17   12
+ [83,]   14    3   10   11   10
+ [84,]   14    2    8   16    8
+ [85,]   15    3   11   14   10
+ [86,]   11    2    9   12   15
+ [87,]   10    1   12   16    6
+ [88,]   13    2   10   12    9
+ [89,]   12    1    7   11    8
+ [90,]   14    1   12   12   11
+ [91,]   15    1   13   12   10
+ [92,]   17    2   11   13   16
+ [93,]   13    2   10   17    7
+ [94,]   11    3   11   11   10
+ [95,]   14    3    4   10   10
+ [96,]   15    1    9   16    9
+ [97,]   15    2   10   14   11
+ [98,]   10    1    8   14    8
+ [99,]   14    4    5   15   10
+[100,]   13    3    9   19   13
+[101,]   16    1   10   13   12
+[102,]   15    4    9   13    9
+[103,]   10    2    8   15    9
+[104,]   17    3   11   14    9
+[105,]    8    2   12   17    7
+[106,]   13    1    6   16   12
+[107,]    9    2   12    8   11
+[108,]   10    3   10   13    7
+[109,]   12    2    6   17   16
+[110,]   11    3    8   14   12
+[111,]   11    1    8   11   13
+[112,]   18    2    8   18   11
+[113,]   14    2    8   16   13
+[114,]   11    2   10   19    8
+[115,]   12    3    7   16   10
+[116,]   15    2    8   12   12
+[117,]   15    1    9   16    9
+[118,]   16    0   14   14   13
+[119,]   10    2    9   15   13
+[120,]   10    1   10   19   11
+[121,]   10    3   11   13    7
+[122,]   15    3    9   10   12
+[123,]   14    1   12   13    7
+[124,]   16    3   12   12    4
+[125,]   14    1   10   16    9
+[126,]   10    1    9   12    8
+[127,]   13    1   11   15    9
+[128,]   12    2   14   14   12
+[129,]   14    2   10   21   13
+[130,]   10    1    8   12   10
+[131,]   14    1    9   10   13
+[132,]   10    3   10   16   10
+[133,]   12    2   12   14   13
+[134,]   15    3    7   17   12
+[135,]   18    1   10   13   10
+[136,]   12    3   11   16   14
+[137,]   10    2   12   17    8
+[138,]   15    2   10   13    9
+[139,]   12    3    6   15   14
+[140,]   13    2    7   11   10
+[141,]   12    2    9   12   15
+[142,]   13    2   10   16   12
+[143,]   16    3   11   11   10
+[144,]   13    2    9   13    9
+[145,]   14    3    9   17    6
+[146,]   10    2   10   18    6
+[147,]   13    1    8   15   11
+[148,]   13    3    8   20   12
+[149,]   12    3   10   16    7
+[150,]    7    3   12   15   11
+[151,]   11    1   12   15   10
+[152,]   12    2   12   17   12
+[153,]   16    2    8   15    8
+[154,]   15    2   10   14   10
+[155,]   16    2   12   13   12
+[156,]   14    1   13   12    9
+[157,]    8    2   11   14    8
+[158,]   12    2   13   13    9
+[159,]   12    3   10   17   10
+[160,]   13    2    8   14   13
+[161,]   11    2    7    8   11
+[162,]    9    4    7   22   12
+[163,]   14    2    5   17   12
+[164,]   10    2   10   13    9
+[165,]   15    1   10   15    9
+[166,]   15    3    8   16    9
+[167,]   13    3    8   11   12
+[168,]   13    1    6   15    8
+[169,]   12    2   12   16   15
+[170,]   13    2   11   16   14
+[171,]   14    3    7   12   12
+[172,]   12    1   10   14   10
+[173,]    8    3   11   12   12
+[174,]   11    3   11   15   14
+[175,]   11    2   12   16   11
+[176,]   13    1    9   14   10
+[177,]   13    1   14   14    8
+[178,]   15    4   11   13    8
+[179,]   12    3    9   15   10
+[180,]   15    1   10   16   12
+[181,]   13    2   13    9   11
+[182,]   11    2    9   14    6
+[183,]   10    3    9   21   13
+[184,]   14    3   10   15    7
+[185,]   11    3   10   16   10
+[186,]   13    2   10   15    7
+[187,]   14    3   11   15   10
+[188,]   14    2   11   12   10
+[189,]   14    0   13   15   13
+[190,]   12    3   12   13   11
+[191,]   14    3    8   12    6
+[192,]   18    1    9   14   17
+[193,]    9    3    8   12   12
+[194,]   13    2   12   18   11
+[195,]   15    2   11   14   10
+[196,]   19    3   11   15    6
+[197,]   14    2   14   14   12
+[198,]   14    4    5   13   15
+[199,]   14    3    9   11   10
+[200,]   19    3    9   12   10
+
+ [ reached getOption("max.print") -- omitted 1 matrix slice(s) ]
+
+$counts.for.columns
+, , 1
+
+       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+  [1,]    3    3   81    4    2    0    3    2    0
+  [2,]    7    5   74    2    1    1    2    1    0
+  [3,]    4    2   87    3    4    3    2    2    1
+  [4,]    2    7   77    3    1    3    2    1    1
+  [5,]    2    4   74    4    2    3    3    1    1
+  [6,]    3    4   76    4    2    2    2    2    1
+  [7,]    3    5   73    4    3    4    2    1    0
+  [8,]    3    3   84    4    3    4    2    2    0
+  [9,]    3    5   68    2    2    4    3    2    1
+ [10,]    5    3   84    1    3    3    0    2    0
+ [11,]    4    4   84    3    2    3    3    1    0
+ [12,]    4    2   96    4    1    2    3    3    1
+ [13,]    3    2   73    3    4    2    3    1    0
+ [14,]    5    2   75    3    3    4    4    2    0
+ [15,]    4    1   71    2    3    4    2    1    1
+ [16,]    2    3   81    1    0    2    2    3    0
+ [17,]    4    2   86    1    3    3    1    1    0
+ [18,]    4    3   77    0    4    3    1    2    1
+ [19,]    3    3   76    2    1    2    0    1    0
+ [20,]    3    0   77    1    5    2    3    1    0
+ [21,]    3    5   80    2    5    2    3    2    1
+ [22,]    2    2   80    0    4    0    2    2    1
+ [23,]    4    5   77    3    2    4    1    2    1
+ [24,]    4    6   79    1    2    2    2    1    0
+ [25,]    2    3   71    4    2    3    1    1    0
+ [26,]    2    4   80    2    2    3    1    1    1
+ [27,]    2    3   68    0    3    3    4    1    1
+ [28,]    2    2   77    4    3    5    1    0    0
+ [29,]    3    1   77    3    2    4    2    2    1
+ [30,]    1    0   76    1    4    3    2    1    0
+ [31,]    2    9   67    3    2    4    1    3    0
+ [32,]    1    7   72    4    2    2    1    0    0
+ [33,]    3    7   84    2    2    1    1    3    0
+ [34,]    0    7   78    4    3    0    3    1    0
+ [35,]    3    9   82    3    3    2    1    0    0
+ [36,]    3    8   83    3    2    2    1    3    0
+ [37,]    5    8   90    3    0    3    2    1    1
+ [38,]    3    6   79    1    3    3    1    1    0
+ [39,]    2    8   78    2    5    1    1    1    1
+ [40,]    6    9   63    5    3    4    0    2    0
+ [41,]    4    7   79    3    3    4    2    1    1
+ [42,]    1    9   73    3    3    1    3    1    0
+ [43,]    4    7   85    4    4    1    0    3    1
+ [44,]    2    7   79    3    4    3    1    2    1
+ [45,]    2    6   72    2    5    3    3    1    1
+ [46,]    2    9   72    3    3    4    2    2    1
+ [47,]    1    6   67    3    5    3    0    2    1
+ [48,]    2    9   83    3    3    3    1    2    1
+ [49,]    4    7   78    5    5    2    3    1    0
+ [50,]    6    9   84    5    3    4    2    2    0
+ [51,]    1    6   61    3    4    3    2    0    0
+ [52,]    5    9   73    1    3    3    2    3    0
+ [53,]    3    9   80    1    3    1    3    2    1
+ [54,]    1    9   81    2    2    3    0    1    1
+ [55,]    2    9   76    4    3    1    1    1    0
+ [56,]    3    8   71    4    2    3    2    2    1
+ [57,]    2    8   80    2    4    3    1    2    0
+ [58,]    2    7   84    3    3    3    2    1    1
+ [59,]    2    8   72    1    2    3    2    1    0
+ [60,]    3    9   80    3    3    4    1    0    0
+ [61,]   10    1   74    2    2    3    3    1    1
+ [62,]    8    1   80    3    3    3    2    3    1
+ [63,]    9    1   84    3    2    1    1    1    1
+ [64,]    9    1   70    4    3    3    0    2    0
+ [65,]   10    1   88    3    2    3    4    1    1
+ [66,]    9    2   84    3    2    5    2    1    1
+ [67,]    9    3   72    1    3    3    0    2    1
+ [68,]   10    4   74    2    4    4    2    3    0
+ [69,]   10    3   77    2    2    2    3    3    0
+ [70,]    8    2   82    3    4    5    3    1    1
+ [71,]    9    3   82    3    2    3    1    2    0
+ [72,]    9    2   77    3    2    4    1    3    1
+ [73,]    9    1   70    4    5    4    3    2    1
+ [74,]    9    1   76    4    4    3    2    0    1
+ [75,]   10    1   77    0    3    2    3    2    1
+ [76,]   10    0   62    3    3    3    3    2    1
+ [77,]    8    2   82    3    3    4    3    2    1
+ [78,]   10    3   74    3    4    3    2    3    0
+ [79,]    9    2   66    3    2    3    2    1    1
+ [80,]   10    1   79    3    5    1    1    1    0
+ [81,]    8    5   61    4    2    3    2    2    1
+ [82,]    6    7   81    4    2    2    1    1    0
+ [83,]    7    5   71    2    3    0    0    2    1
+ [84,]   10    7   73    5    1    0    1    3    0
+ [85,]    8    5   81    3    1    2    1    1    0
+ [86,]    9    9   76    2    2    2    2    2    1
+ [87,]    9    5   70    3    1    3    1    1    0
+ [88,]    7    8   85    4    2    1    2    1    0
+ [89,]    8    9   71    1    3    0    1    1    0
+ [90,]    8    8   87    2    2    2    0    1    1
+ [91,]    6    7   69    4    4    2    3    2    0
+ [92,]    6    5   81    3    3    0    0    2    1
+ [93,]    8    6   73    2    1    4    2    2    1
+ [94,]    4   10   82    4    3    2    2    2    0
+ [95,]    8    7   84    2    1    3    4    2    1
+ [96,]    8    6   83    3    0    4    2    0    1
+ [97,]   10    6   77    2    2    4    1    1    0
+ [98,]    3    7   70    4    5    4    1    2    1
+ [99,]    7   10   70    4    2    2    3    1    0
+[100,]    5    8   84    2    1    1    3    2    0
+
+, , 2
+
+       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+  [1,]    7    7   76    1    3    5    1    1    1
+  [2,]    3    5   83    3    4    4    2    2    1
+  [3,]    6    8   70    2    1    2    2    1    0
+  [4,]    8    3   80    2    4    2    2    2    0
+  [5,]    8    6   83    1    3    2    1    2    0
+  [6,]    7    6   81    1    3    3    2    1    0
+  [7,]    7    5   84    1    2    1    2    2    1
+  [8,]    7    7   73    1    2    1    2    1    1
+  [9,]    7    5   89    3    3    1    1    1    0
+ [10,]    5    7   73    4    2    2    4    1    1
+ [11,]    6    6   73    2    3    2    1    2    1
+
+
+$counts.for.labels
+     [,1] [,2]
+[1,]    0   26
+[2,]    0    4
+[3,]   20    0
+[4,]   29    0
+[5,]   21    0
+
+$Pi
+[1] 0.26 0.04 0.20 0.29 0.21
+
+$Theta
+           [,1]      [,2]      [,3]      [,4]       [,5]
+ [1,] 0.6685824 0.7439024 0.2761194 0.7508591 0.08293839
+ [2,] 0.6532567 0.8902439 0.2910448 0.2113402 0.80805687
+ [3,] 0.5053882 0.4904610 0.5070041 0.5110892 0.51743481
+ [4,] 0.4923664 0.7380952 0.4108911 0.4143836 0.43867925
+ [5,] 0.5305344 0.1666667 0.6287129 0.3527397 0.41037736
+ [6,] 0.4236641 0.5952381 0.5693069 0.5034247 0.38207547
+ [7,] 0.4904762 0.4411765 0.6111111 0.6196581 0.48823529
+ [8,] 0.5000000 0.5000000 0.5163934 0.4829545 0.39843750
+ [9,] 0.5370370 0.5000000 0.5476190 0.5833333 0.29545455
+
+$Psi
+              [,1]          [,2]
+[1,] 1.923077e-102  1.000000e+00
+[2,] 1.250000e-101  1.000000e+00
+[3,]  1.000000e+00 2.500000e-102
+[4,]  1.000000e+00 1.724138e-102
+[5,]  1.000000e+00 2.380952e-102
+
+$row.weights
+  [1] 2.0271455 0.6092479 0.8643962 1.9561874 1.1513979 2.1995808 0.6303485 1.1949261 0.5176435 0.7705401 3.3186131 1.8956857 3.4980104
+ [14] 0.7569746 1.7280598 0.6699838 2.7980408 0.4855661 3.8867096 1.5488030 0.7432722 1.0165666 0.7620810 1.0097875 0.8600129 0.9478393
+ [27] 1.1599751 0.8586133 1.0568638 1.2005270 1.0608844 0.9046794 0.8356844 1.0367157 0.9760504 0.9350288 0.7262575 0.7318851 1.1221423
+ [40] 0.8592392 0.9591700 0.7969351 1.0920500 0.8903407 0.9103106 1.0348743 0.6383040 0.8790828 0.8125142 0.9039224 0.8222108 1.0866678
+ [53] 0.6721827 0.6372618 0.7734469 1.0632514 1.0119030 0.9063001 1.0147005 0.7730505 0.9132105 0.8691139 0.9701005 1.0419905 0.9301496
+ [66] 0.9432778 0.8865607 0.8619907 0.9353655 0.7358878 0.8780041 1.1849680 0.9543443 0.9259396 0.9747877 1.0466481 0.7228289 0.8606175
+ [79] 0.7772391 0.9137349 1.4611089 1.0824515 1.2229223 0.8931291 1.0899393 1.1960650 0.8365084 0.9919982 0.7940513 0.9589551 0.8768593
+ [92] 0.7583781 0.9532327 0.8671466 1.5127095 1.0974910 1.1641004 0.8756462 0.6353105 1.2813651 0.9926437 1.5605175 0.8352223 1.2246050
+[105] 1.1433939 0.9348464 1.0144274 0.7657834 1.1061579 0.8505768 0.8159007 1.4101017 0.9377755 0.9620983 0.9706645 0.9287041 0.9481933
+[118] 1.0307902 0.8859080 1.0297514 0.7930683 1.1033744 1.0399013 0.8790218 1.0308558 0.7371414 0.9952959 0.9650305 1.0246285 1.0214296
+[131] 0.8996849 1.2759686 0.9916090 1.0415628 1.1502425 1.1512467 1.0070235 1.0749161 1.0099379 1.1667371 1.1207997 0.9750888 1.0923077
+[144] 0.8663212 1.0728924 0.8581740 1.0977510 0.9093459 1.0034246 1.0639143 0.9806354 0.9833850 1.0445659 1.1090113 1.0947451 1.2670779
+[157] 0.8090189 1.2142935 1.0641644 0.9862359 0.8922870 1.4848952 1.1125040 0.9607559 0.9691956 1.0570155 1.0723432 0.8302744 0.9137991
+[170] 0.7337928 1.1431524 0.9379092 0.8184341 0.8255985 0.8358254 1.0676073 0.9961490 0.8466404 0.7099618 1.1163900 0.9615675 0.7493226
+[183] 0.8523639 1.0271736 0.8881370 1.2214353 0.9410750 0.9371484 0.9072881 0.9771146 0.9270332 0.4238707 0.9051050 0.9455757 0.8783311
+[196] 1.1205265 1.0566572 0.6754714 0.8051386 1.4306343
