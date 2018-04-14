@@ -664,7 +664,7 @@ SUBSTRA.train_consensus <- function(data, labels,
     print("Tuning the 'magnitude'...")
   
   magnitude=SUBSTRA.tune(data,labels,pathToSUBSTRA,magnitudes,nfolds_tune,phase_1_ite_tune,phase_1_ite_tune,parallel_tune,
-                         min(ncores,nfolds),verbose_tune,trainVerbose_tune,alpha_l,alpha_p,alpha_t,alpha_e)
+                         min(ncores,nfolds_tune),verbose_tune,trainVerbose_tune,alpha_l,alpha_p,alpha_t,alpha_e)
   if(verbose)
     print(paste0("Selected 'magnitude': ",magnitude))
   
