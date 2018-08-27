@@ -1,8 +1,6 @@
 # SUBSTRA
 Source Code for SUBSTRA Method (see the 'Example Usage' folder for help)
 
-The manuscript is submitted to ECCB 2018.
-
 ## Title:
 SUBSTRA: Supervised Bayesian Patient Stratification
 
