@@ -2,6 +2,7 @@ library(pROC)
 library(clusteval)
 library(foreach)
 library(doParallel)
+# library(pheatmap)
 
 
 # NOTICE: The current version assumes BINARY 'data' and 'labels'. The next versions will be more general and applicable for categorical and continuous values.
@@ -14,21 +15,24 @@ library(doParallel)
 #   (the first element of the first element corresponds to the first element of the second element, the second element of the first element corresponds to the second element of the second element, etc.)
 
 SUBSTRA.split_dataset = function(data, labels, nfolds){
-  minv=min(labels)
-  maxv=max(labels)
-  cases=which(labels==maxv)
-  controls=which(labels==minv)
-  casestops=round(c(0,c(1:nfolds)*length(cases)/nfolds))
-  controlstops=round(c(0,c(1:nfolds)*length(controls)/nfolds))
   dataparts=list()
   labelparts=list()
-  for(i in 1:nfolds){
-    dataparts[[i]]=cbind.data.frame(data[,cases[(casestops[i]+1):casestops[i+1]]],
-                                    data[,controls[(controlstops[i]+1):controlstops[i+1]]])
-    labelparts[[i]]=c(labels[cases[(casestops[i]+1):casestops[i+1]]],
-                      labels[controls[(controlstops[i]+1):controlstops[i+1]]])
+  for(v in unique(labels)){
+    cases=which(labels==v)
+    casestops=round(c(0,c(1:nfolds)*length(cases)/nfolds))
+    
+    for(i in 1:nfolds){
+      if(length(dataparts)<i){
+        dataparts[[i]]=data[,cases[(casestops[i]+1):casestops[i+1]]]
+        labelparts[[i]]=labels[cases[(casestops[i]+1):casestops[i+1]]]  
+      }else{
+        dataparts[[i]]=cbind.data.frame(data[,cases[(casestops[i]+1):casestops[i+1]]],
+                                        dataparts[[i]])
+        labelparts[[i]]=c(labels[cases[(casestops[i]+1):casestops[i+1]]],
+                          labelparts[[i]])
+      }
+    }
   }
-  
   output=list()
   output[[1]]=dataparts
   output[[2]]=labelparts
@@ -63,8 +67,6 @@ SUBSTRA.train <- function(data, labels,
   
   data=as.matrix(data)
   data = data + (1-min(data))
-  m=max(data)
-  data[data==m]=2
   labels = labels + (1-min(labels))
   Nv = length(unique(labels))
   Np = ncol(data)
@@ -89,7 +91,7 @@ SUBSTRA.train <- function(data, labels,
   ########### Phase 0: Random Initialization ############
   
   for(i in 1:Np)
-    kp[i] = sample(seq(labels[i],round(sqrt(Np)),by=2),1)
+    kp[i] = sample(seq(labels[i],round(sqrt(Np)),by=Nv),1)
   kt = sample(c(1:round(sqrt(Nt))),Nt,replace = T)
   for(i in 1:Kp){
     kpinds=which(kp==i)
@@ -138,16 +140,27 @@ SUBSTRA.train <- function(data, labels,
     empty.kt=min(which(ntINkt==0))
   
   Pi=npINkp[occupied.kp]/Np
-  Theta=(nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e/2)/
-    (nesINkpkt[occupied.kp,occupied.kt,1]+nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e)
-  Psi=array(nvsINKp[occupied.kp,]+alpha_l/Nv,dim=c(length(occupied.kp),2))/array(rep(npINkp[occupied.kp]+alpha_l,2),dim=c(length(occupied.kp),2))
+  Theta=matrix((nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e/2)/
+    (nesINkpkt[occupied.kp,occupied.kt,1]+nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e),length(occupied.kp),length(occupied.kt))
+  Psi=array(nvsINKp[occupied.kp,]+alpha_l/Nv,dim=c(length(occupied.kp),Nv))/array(rep(npINkp[occupied.kp]+alpha_l,Nv),dim=c(length(occupied.kp),Nv))
   best.model=list(column.clusters=match(kp,occupied.kp), row.clusters=match(kt,occupied.kt),
                   bicluster.counts=nesINkpkt[occupied.kp,occupied.kt,], counts.for.rows=neINtFORkp[,occupied.kp,], counts.for.pats=neINpFORkt[,occupied.kt,], counts.for.labels=nvsINKp[occupied.kp,],
                   Pi=Pi,Theta=t(Theta),Psi=Psi,row.weights=row.weights)
   preds=SUBSTRA.predict(best.model,data)
-  r=roc(as.factor(labels),preds[,2],direction = "<")
-  bestauc=r$auc
-  besterr=mean((labels-1-preds[,2])^2)
+  auc=0
+  err=0
+  for(v in 1:Nv){
+    tlabs=ifelse(labels==v,1,0)
+    r=roc(as.factor(tlabs),preds[,v],direction = "<")
+    auc=auc+r$auc
+    err=err+mean((tlabs-preds[,v])^2)
+  }
+  auc=auc/Nv
+  err=err/Nv
+  # r=roc(as.factor(labels),preds[,2],direction = "<")
+  bestauc=auc
+  # besterr=mean((labels-1-preds[,2])^2)
+  besterr=err
   if(verbose){
     print("Initial Status:")
     print(paste0("Train Set AUC: ", bestauc))
@@ -180,7 +193,7 @@ SUBSTRA.train <- function(data, labels,
       sig.kp=c(occupied.kp,empty.kp)
       sig.kt=c(occupied.kt,empty.kt)
       ### compute probability
-      Theta=(nesINkpkt[sig.kp,sig.kt,2]+alpha_e/2)/(nesINkpkt[sig.kp,sig.kt,1]+nesINkpkt[sig.kp,sig.kt,2]+alpha_e)
+      Theta=matrix((nesINkpkt[sig.kp,sig.kt,2]+alpha_e/2)/(nesINkpkt[sig.kp,sig.kt,1]+nesINkpkt[sig.kp,sig.kt,2]+alpha_e),length(sig.kp),length(sig.kt))
       t.prob=colSums(log(1-Theta)*matrix(rep(neINtFORkp[t,sig.kp,1],length(sig.kt)),nrow = length(sig.kp),ncol = length(sig.kt),byrow = F))+
         colSums(log(Theta)*matrix(rep(neINtFORkp[t,sig.kp,2],length(sig.kt)),nrow = length(sig.kp),ncol = length(sig.kt),byrow = F))
       
@@ -266,18 +279,27 @@ SUBSTRA.train <- function(data, labels,
     }#p
     
     Pi=npINkp[occupied.kp]/Np
-    Theta=(nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e/2)/
-      (nesINkpkt[occupied.kp,occupied.kt,1]+nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e)
-    Psi=(nvsINKp[occupied.kp,]+alpha_l/Nv)/array(rep(npINkp[occupied.kp]+alpha_l,2),dim=c(length(occupied.kp),2))
+    Theta=matrix((nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e/2)/
+      (nesINkpkt[occupied.kp,occupied.kt,1]+nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e),length(occupied.kp),length(occupied.kt))
+    Psi=(nvsINKp[occupied.kp,]+alpha_l/Nv)/array(rep(npINkp[occupied.kp]+alpha_l,Nv),dim=c(length(occupied.kp),Nv))
     model=list(column.clusters=match(kp,occupied.kp), row.clusters=match(kt,occupied.kt),
                bicluster.counts=nesINkpkt[occupied.kp,occupied.kt,], counts.for.rows=neINtFORkp[,occupied.kp,], counts.for.pats=neINpFORkt[,occupied.kt,], counts.for.labels=nvsINKp[occupied.kp,],
                Pi=Pi,Theta=t(Theta), Psi=Psi,row.weights=row.weights)
     
     preds=SUBSTRA.predict(model,data)
-    r=roc(as.factor(labels),preds[,2],direction = "<")
-    err=mean((labels-1-preds[,2])^2)
+    auc=0
+    err=0
+    for(v in 1:Nv){
+      tlabs=ifelse(labels==v,1,0)
+      r=roc(as.factor(tlabs),preds[,v],direction = "<")
+      auc=auc+r$auc
+      err=err+mean((tlabs-preds[,v])^2)
+    }
+    auc=auc/Nv
+    err=err/Nv
+    
     besterr=err
-    bestauc=r$auc
+    bestauc=auc
     best.model=model
     
     rkp=cluster_similarity(kp,prev.kp)
@@ -296,7 +318,7 @@ SUBSTRA.train <- function(data, labels,
       print("")
       print(paste0("Current Weights (Min - Average - Max): ",min(row.weights)," - ",mean(row.weights)," - ",max(row.weights)))
       print("")
-      print(paste0("Train Set AUC: ", r$auc))
+      print(paste0("Train Set AUC: ", auc))
       print(paste0("Train Set MSE: ",err))
     }
     
@@ -386,17 +408,23 @@ SUBSTRA.train <- function(data, labels,
       nvsINKp[tempkp,labels[p]]=nvsINKp[tempkp,labels[p]]-1
       
       ### compute weights
-      Theta=(nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e/2)/
-        (nesINkpkt[occupied.kp,occupied.kt,1]+nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e)
+      Theta=matrix((nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e/2)/
+        (nesINkpkt[occupied.kp,occupied.kt,1]+nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e),nrow = length(occupied.kp),ncol = length(occupied.kt))
       Pi=npINkp[occupied.kp]/Np
-      Psi=(nvsINKp[occupied.kp,]+alpha_l/Nv)/array(rep(npINkp[occupied.kp]+alpha_l,2),dim=c(length(occupied.kp),2))
+      Psi=(nvsINKp[occupied.kp,]+alpha_l/Nv)/array(rep(npINkp[occupied.kp]+alpha_l,Nv),dim=c(length(occupied.kp),Nv))
       
       # Error before adjusting the weights
       BO.model=list(column.clusters=match(kp,occupied.kp), row.clusters=match(kt,occupied.kt),
                     bicluster.counts=nesINkpkt[occupied.kp,occupied.kt,], counts.for.rows=neINtFORkp[,occupied.kp,], counts.for.pats=neINpFORkt[,occupied.kt,], counts.for.labels=nvsINKp[occupied.kp,],
                     Pi=Pi,Theta=t(Theta), Psi=Psi,row.weights=row.weights)
       preds=SUBSTRA.predict(BO.model,as.matrix(data[,p]))
-      BOerr=(labels[p]-1-preds[2])^2
+      err=0
+      for(v in 1:Nv){
+        tlabs=ifelse(labels[p]==v,1,0)
+        err=err+(tlabs-preds[v])^2
+      }
+      err=err/Nv
+      BOerr=err
       
       # Derivative
       reverseData=matrix(rep(2-data[,p],length(occupied.kp)),nrow = length(occupied.kp),ncol = Nt,byrow = T)
@@ -407,14 +435,14 @@ SUBSTRA.train <- function(data, labels,
       logs=logs+log(.Machine$double.xmax)-max(logs)-log(length(logs))
       values=exp(logs)
       values=values/sum(values)
-      A=sum(values*Psi[,2])
+      A=sum(values*Psi[,labels[p]])
       B=1
-      dA=colSums(matrix(rep(values*Psi[,2],Nt),byrow = F,nrow = length(occupied.kp),ncol = Nt)*logTheta)
+      dA=colSums(matrix(rep(values*Psi[,labels[p]],Nt),byrow = F,nrow = length(occupied.kp),ncol = Nt)*logTheta)
       dB=colSums(matrix(rep(values,Nt),byrow = F,nrow = length(occupied.kp),ncol = Nt)*logTheta)
       f=A/B
       df=(dA*B-dB*A)/(B*B)
       # Updating the weights
-      temp.weights=temp.weights+magnitude*2*(labels[p]-1-f)*df
+      temp.weights=temp.weights+magnitude*2*(1-f)*df
       temp.weights[which(temp.weights<0)]=0
       
       # Checking if the weights improve the prediction accuracy
@@ -422,7 +450,13 @@ SUBSTRA.train <- function(data, labels,
                     bicluster.counts=nesINkpkt[occupied.kp,occupied.kt,], counts.for.rows=neINtFORkp[,occupied.kp,], counts.for.pats=neINpFORkt[,occupied.kt,], counts.for.labels=nvsINKp[occupied.kp,],
                     Pi=Pi,Theta=t(Theta), Psi=Psi,row.weights=temp.weights)
       preds=SUBSTRA.predict(AO.model,as.matrix(data[,p]))
-      AOerr=(labels[p]-1-preds[2])^2
+      err=0
+      for(v in 1:Nv){
+        tlabs=ifelse(labels[p]==v,1,0)
+        err=err+(tlabs-preds[v])^2
+      }
+      err=err/Nv
+      AOerr=err
       
       if(AOerr < BOerr){
         row.weights=temp.weights
@@ -468,16 +502,24 @@ SUBSTRA.train <- function(data, labels,
     w.diff=length(which(row.weights!=prev.weights))
     
     Pi=npINkp[occupied.kp]/Np
-    Theta=(nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e/2)/
-      (nesINkpkt[occupied.kp,occupied.kt,1]+nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e)
-    Psi=(nvsINKp[occupied.kp,]+alpha_l/Nv)/array(rep(npINkp[occupied.kp]+alpha_l,2),dim=c(length(occupied.kp),2))
+    Theta=matrix((nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e/2)/
+      (nesINkpkt[occupied.kp,occupied.kt,1]+nesINkpkt[occupied.kp,occupied.kt,2]+alpha_e),length(occupied.kp),length(occupied.kt))
+    Psi=(nvsINKp[occupied.kp,]+alpha_l/Nv)/array(rep(npINkp[occupied.kp]+alpha_l,Nv),dim=c(length(occupied.kp),Nv))
     model=list(column.clusters=match(kp,occupied.kp), row.clusters=match(kt,occupied.kt),
                bicluster.counts=nesINkpkt[occupied.kp,occupied.kt,], counts.for.rows=neINtFORkp[,occupied.kp,], counts.for.columns=neINpFORkt[,occupied.kt,], counts.for.labels=nvsINKp[occupied.kp,],
                Pi=Pi,Theta=t(Theta), Psi=Psi,row.weights=row.weights)
     
     preds=SUBSTRA.predict(model,data)
-    r=roc(as.factor(labels),preds[,2],direction = "<")
-    err=mean((labels-1-preds[,2])^2)
+    auc=0
+    err=0
+    for(v in 1:Nv){
+      tlabs=ifelse(labels==v,1,0)
+      r=roc(as.factor(tlabs),preds[,v],direction = "<")
+      auc=auc+r$auc
+      err=err+mean((tlabs-preds[,v])^2)
+    }
+    auc=auc/Nv
+    err=err/Nv
     
     rkp=cluster_similarity(kp,prev.kp)
     rkt=cluster_similarity(kt,prev.kt)
@@ -496,11 +538,11 @@ SUBSTRA.train <- function(data, labels,
       print("")
       print(paste0("Current Weights (Min - Average - Max): ",min(row.weights)," - ",mean(row.weights)," - ",max(row.weights)))
       print("")
-      print(paste0("Train Set AUC: ", r$auc))
+      print(paste0("Train Set AUC: ", auc))
       print(paste0("Train Set MSE: ",err))
     }
     
-    if(r$auc > bestauc){
+    if(auc > bestauc){
       best.model=model
       besterr=err
       bestauc=r$auc
@@ -508,11 +550,10 @@ SUBSTRA.train <- function(data, labels,
         print("")
         print("Best Model Updated!!!")
       }
-    }else if(r$auc == bestauc){
+    }else if(auc == bestauc){
       if(err <= besterr){
         best.model=model
         besterr=err
-        bestauc=r$auc
         if(verbose){
           print("")
           print("Best Model Updated!!!")
@@ -543,7 +584,7 @@ SUBSTRA.predict <- function(model, data){
     logs=logs+log(.Machine$double.xmax)-max(logs)-log(length(logs))
     values=exp(logs)
     clusterProbs=values/sum(values)
-    probs[i,] = colSums(matrix(rep(clusterProbs,2),nrow=nrow(model$Psi),ncol=ncol(model$Psi))*model$Psi)
+    probs[i,] = colSums(matrix(rep(clusterProbs,ncol(model$Psi)),nrow=nrow(model$Psi),ncol=ncol(model$Psi))*model$Psi)
   }
   return(round(probs,6))
 }
@@ -568,8 +609,12 @@ SUBSTRA.tune <- function(data, labels,
                          alpha_p = 1,       # hyper-parameter for column clustering
                          alpha_t = 1,       # hyper-parameter for row clustering
                          alpha_e = 1){      # hyper-parameter for bicluster parameters
+  if(length(magnitudes)==1)
+    return(magnitudes[1])
   
   data=as.matrix(data)
+  data = data + (1-min(data))
+  labels = labels + (1-min(labels))
   dataparts=SUBSTRA.split_dataset(data,labels,nfolds)
   bestAUC=0
   bestMagnitude=magnitudes[1]
@@ -588,9 +633,15 @@ SUBSTRA.tune <- function(data, labels,
         
         model=SUBSTRA.train(trainData,trainLabs,phase_1_ite = phase_1_ite,phase_2_ite = phase_2_ite,verbose = trainVerbose,
                             magnitude = magnitude,alpha_p = alpha_p,alpha_t = alpha_t,alpha_l = alpha_l,alpha_e = alpha_e)
-        ps=SUBSTRA.predict(model,testData)[,2]
-        r=roc(as.factor(testLabs), ps, direction = "<")
-        length(testLabs)*r$auc
+        ps=SUBSTRA.predict(model,testData)
+        auc=0
+        for(v in unique(trainLabs)){
+          tlabs=ifelse(testLabs==v,1,0)
+          r=roc(as.factor(tlabs),ps[,v],direction = "<")
+          auc=auc+r$auc
+        }
+        auc=auc/length(unique(trainLabs))
+        length(testLabs)*auc
       }
       stopCluster(cl)
       registerDoSEQ()
@@ -605,9 +656,15 @@ SUBSTRA.tune <- function(data, labels,
         
         model=SUBSTRA.train(trainData,trainLabs,phase_1_ite = phase_1_ite,phase_2_ite = phase_2_ite,verbose = trainVerbose,
                             magnitude = magnitude,alpha_p = alpha_p,alpha_t = alpha_t,alpha_l = alpha_l,alpha_e = alpha_e)
-        ps=SUBSTRA.predict(model,testData)[,2]
-        r=roc(as.factor(testLabs), ps, direction = "<")
-        AUC=AUC+length(testLabs)*r$auc
+        ps=SUBSTRA.predict(model,testData)
+        auc=0
+        for(v in unique(trainLabs)){
+          tlabs=ifelse(testLabs==v,1,0)
+          r=roc(as.factor(tlabs),ps[,v],direction = "<")
+          auc=auc+r$auc
+        }
+        auc=auc/length(unique(trainLabs))
+        AUC=AUC+length(testLabs)*auc
       }
       AUC=AUC/length(labels)
     }
@@ -721,10 +778,10 @@ SUBSTRA.aggregate <- function(results.kp,  # column.clusters from different mode
       kpcooc[i1,i2]=length(which(results.kp[,i1]==results.kp[,i2]))
     }
   numcl=round(max(apply(results.kp,1,function(x) length(unique(x)))))
-  for(thr in seq(0,ntimes,ntimes/100)){
-    kphc=hclust(as.dist(ntimes-kpcooc),method = 'average')
+  kphc=hclust(as.dist(runs-kpcooc),method = 'average')
+  for(thr in kphc$height){
     kp=cutree(kphc,h=thr)
-    if(max(kp)<numcl)
+    if(max(kp)<=numcl)
       break
   }
   binarymat=matrix(0,nrow = length(kp),ncol = length(kp))
@@ -742,10 +799,10 @@ SUBSTRA.aggregate <- function(results.kp,  # column.clusters from different mode
       ktcooc[i1,i2]=length(which(results.kt[,i1]==results.kt[,i2]))
     }
   numcl=round(max(apply(results.kt,1,function(x) length(unique(x)))))
-  for(thr in seq(0,ntimes,ntimes/100)){
-    kthc=hclust(as.dist(ntimes-ktcooc),method = 'average')
+  kthc=hclust(as.dist(runs-ktcooc),method = 'average')
+  for(thr in kthc$height){
     kt=cutree(kthc,h=thr)
-    if(max(kt)<numcl)
+    if(max(kt)<=numcl)
       break
   }
   binarymat=matrix(0,nrow = length(kt),ncol = length(kt))
